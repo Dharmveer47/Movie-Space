@@ -14,14 +14,15 @@ const Home = ({ state, dispatch }) => {
       <Search />
       <MovieInfo des="Review your movies & TvShow" />
       <MovieInfo des="Make your favorite playlist" />
-      <MovieInfo des="Like❤️ ! with IMDB " />
+      <MovieInfo des="Like❤️ ! with IMDB " />      
 
-      <MovieFilter type={"Free ! Watch on MXplayer"}/>
-      <Card/>
-      <MovieFilter type={"TvShow's Today Trending"}/>
-      <Card />
       <MovieFilter type={"Movies's Today Trending"}/>
       <Card />
+      <MovieFilter type={"TvShow's Today Trending"}/>
+      <Card />
+      
+      <MovieFilter type={"Free ! Watch on MXplayer"}/>
+      <Card/>
       <MovieFilter type={"Latest Tailor Movie & Tvshow"}/>
       <Tailor/>
     </div>

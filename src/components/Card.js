@@ -2,7 +2,12 @@ import React from "react";
 import Img from "../img/blackWindow.png";
 const Card = () => {
   return (
-    <div className="flexCC flex-wrap z-10 ">
+    <div className="flexCB z-10 w-[90%] mx-auto  overflow-scroll overflow-y-hidden ">
+      <SingleCard/>
+      <SingleCard/>
+      <SingleCard/>
+      <SingleCard/>
+      <SingleCard/>
       <SingleCard/>
       <SingleCard/>
       <SingleCard/>
@@ -13,11 +18,19 @@ const Card = () => {
 const SingleCard = () => {
   return (
     <>
-      <div className="relative m-2 shadow-lg cursor-pointer">
-        <img src={Img} alt=""  className="mdx:w-32 h-auto w-40 "/>
-        <div className=" w-10 h-10 rounded-full bg-gray-900 flexCC text-white font-bold border-gray-50 border-4 absolute     -bottom-3 -right-3 ">
+      <div>
+      <div className="relative m-2 my-3 shadow-lg cursor-pointer rounded-md">
+        <img src={Img} alt=""  className="mdx:min-w-[100px] h-auto min-w-[160px] "/>
+        <div className=" w-8 h-8 text-sm rounded-full bg-gray-900 flexCC text-white font-bold border-gray-50 border-2 absolute     -bottom-3 -right-3 ">
           9
         </div>
+      </div>
+      <div className="relative m-2 my-3 shadow-lg cursor-pointer rounded-md">
+        <img src={Img} alt=""  className="mdx:min-w-[100px] h-auto min-w-[160px] "/>
+        <div className=" w-8 h-8 text-sm rounded-full bg-gray-900 flexCC text-white font-bold border-gray-50 border-2 absolute     -bottom-3 -right-3 ">
+          9
+        </div>
+      </div>
       </div>
     </>
   );

@@ -11,9 +11,9 @@ const Navbar = () => {
   const state = navShow.state; 
   const dispatch = navShow.dispatch
   return (
-    <div className="flexCB whitespace-nowrap h-16 z-20 relative md:border">
+    <div className="flexCB whitespace-nowrap h-16 z-20 relative ">
       <div className="ml-2 w-1/2">
-        <BiMoviePlay className={`${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"} w-12 h-12 cursor-pointer hover:animate-pulse`} />
+        <BiMoviePlay className={`${state.them ? "bg-transparent text-gray-50" : "text-gray-800"} w-12 h-12 cursor-pointer hover:animate-pulse`} />
       </div>
 
       <div className="flexCC w-[100%] m-auto mdx:navMobile01  ">
@@ -55,14 +55,14 @@ const Navbar = () => {
         <ImMenu
           onClick={() => dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: true })}
           className={`w-10 h-10 cursor-pointer hover:animate-pulse mr-2
-          ${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}
+          ${state.them ? "bg-transparent text-gray-50" : "text-gray-800"}
           ${state.navf ? "hidden" : ""}
         `}
         />
         <ImCross
           onClick={() => dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: false })}
           className={`w-9 h-9 cursor-pointer hover:animate-pulse mr-2
-          ${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}
+          ${state.them ? "bg-transparent text-gray-50" : "text-gray-800"}
           ${state.navf ? "" : "hidden"} 
         `}
         />
@@ -85,11 +85,11 @@ const NavLink = ({ links}) => {
         to={`/${links}`}
         onClick={() => dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: false })}
         className={`${state ? " " : "hidden"}
-        ${state.them ? "bg-gray-800 text-gray-50 hover:text-gray-900" : "text-gray-700"} 
+        ${state.them ? "mdx:bg-gray-900 text-gray-50 hover:text-gray-900" : "text-gray-700"} 
          cursor-pointer mx-3 flex justify-center flex-col group mdx:navMobile03  
         `}
       >
-        <div className={`font-bold  hover:text-gray-400 font-['Ubuntu'] `}>
+        <div className={`font-bold  hover:text-gray-400 font-['Ubuntu'] bg-transparent`}>
           {links}
         </div>
         <div

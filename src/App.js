@@ -23,7 +23,7 @@ export const MovieState = React.createContext();
 const App = () => {
   const [state, dispatch] = useReducer(reducer, []);
   return (
-    <div className={`${state.them ? "bg-gray-800 text-gray-50" : "bg-gray-50"}   font-['Ubuntu']`}>
+    <div className={`${state.them ? "bg-gradient-to-br to-cyan-900 from-gray-900 text-gray-50"  : "bg-gray-50"}   font-['Ubuntu']`}>
       <MovieState.Provider value={{ state, dispatch }}>
         <Router>
           <Navbar />

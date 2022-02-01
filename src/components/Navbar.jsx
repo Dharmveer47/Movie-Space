@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, {  useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BiMoviePlay } from "react-icons/bi";
 import { ImMenu, ImCross } from "react-icons/im";
 import { FaSun, FaMoon } from "react-icons/fa";
-import { ACTION } from "../App";
+import {MovieState } from "../App";
+import {ACTION } from '../Reducer/reducer'
 
-const Navbar = ({ state, dispatch }) => {
-  const [them, setThem] = useState(true);
-
+const Navbar = () => {
+  const navShow = useContext(MovieState);
+  const state = navShow.state; 
+  const dispatch = navShow.dispatch
   return (
     <div className="flexCB whitespace-nowrap h-16 z-20 relative md:border">
       <div className="ml-2 w-1/2">
-        <BiMoviePlay className="w-12 h-12 cursor-pointer hover:animate-pulse text-gray-800" />
+        <BiMoviePlay className={`${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"} w-12 h-12 cursor-pointer hover:animate-pulse`} />
       </div>
 
       <div className="flexCC w-[100%] m-auto mdx:navMobile01  ">
@@ -28,21 +30,22 @@ const Navbar = ({ state, dispatch }) => {
           <NavLink dispatch={dispatch} state links={"AboutMe"} />
           <NavLink dispatch={dispatch} state links={"AboutAPI"} />
           <button
-            className={`w-20 h-8  rounded-2xl  border flexCB px-2 cursor-pointer shadow-inner ${
-              them ? "bg-slate-400" : "bg-slate-900 transition "
+            className={`w-20 h-8  rounded-2xl  border flex items-center px-2 cursor-pointer shadow-inner box-border ${
+              state.them ? "bg-slate-900 transition " : "bg-slate-400 "
             }`}
-            onClick={() => setThem((e) => !e)}
-          >
-            <div>
+            >
+            <div className={`${state.them ? "hidden" : ""} w-full `} 
+            onClick={() => dispatch({type: ACTION.DARK_THEME, them: true})}>
               <FaMoon
-                className={`w-6 h-6 animate-pulse ${them ? "" : "hidden"}`}
+                className="w-6 h-6 animate-pulse"
               />
             </div>
-            <div>
+
+            <div className={`${state.them ? "" : "hidden"} w-full flex justify-end`} 
+             onClick={() => dispatch({type: ACTION.DARK_THEME, them: false})}>
               <FaSun
-                className={`w-6 h-6 text-yellow-300 animate-spin-slow ${
-                  them ? "hidden" : ""
-                }`}
+             
+                className={`w-6 h-6 text-yellow-300 animate-spin-slow `}
               />
             </div>
           </button>
@@ -51,14 +54,16 @@ const Navbar = ({ state, dispatch }) => {
       <div className="md:hidden ">
         <ImMenu
           onClick={() => dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: true })}
-          className={`w-10 h-10 cursor-pointer text-gray-800 
-          ${state.navf ? "hidden" : ""} hover:animate-pulse mr-2
+          className={`w-10 h-10 cursor-pointer hover:animate-pulse mr-2
+          ${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}
+          ${state.navf ? "hidden" : ""}
         `}
         />
         <ImCross
           onClick={() => dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: false })}
-          className={`w-9 h-9 cursor-pointer text-gray-800 
-          ${state.navf ? "" : "hidden"} hover:animate-pulse mr-2
+          className={`w-9 h-9 cursor-pointer hover:animate-pulse mr-2
+          ${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}
+          ${state.navf ? "" : "hidden"} 
         `}
         />
       </div>
@@ -66,21 +71,25 @@ const Navbar = ({ state, dispatch }) => {
   );
 };
 
-const NavLink = ({ links, state, dispatch }) => {
+const NavLink = ({ links}) => {
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
+  const navShow = useContext(MovieState);
+  const state = navShow.state; 
+  const dispatch = navShow.dispatch
 
   return (
     <>
       <Link
         to={`/${links}`}
         onClick={() => dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: false })}
-        className={`${
-          state ? " " : "hidden"
-        } cursor-pointer mx-4 flex justify-center flex-col group mdx:navMobile03  `}
+        className={`${state ? " " : "hidden"}
+        ${state.them ? "bg-gray-800 text-gray-50 hover:text-gray-900" : "text-gray-700"} 
+         cursor-pointer mx-3 flex justify-center flex-col group mdx:navMobile03  
+        `}
       >
-        <div className="  font-bold text-gray-700 hover:text-gray-500 font-['Ubuntu']">
+        <div className={`font-bold  hover:text-gray-400 font-['Ubuntu'] `}>
           {links}
         </div>
         <div

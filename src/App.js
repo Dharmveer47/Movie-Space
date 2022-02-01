@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import { reducer } from "./Reducer/reducer";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Gotop from "./components/Gotop";
@@ -17,45 +18,29 @@ import Login from "./Pages/Login";
 import Aboutme from "./Pages/Aboutme";
 import Aboutapi from "./Pages/Aboutapi";
 
-export const ACTION = {
-  NAVBARSHOWHIDE: "trueFalse",
-  BODY_NAV_HIDE: "bodyNavHide",
-};
-function reducer(state, action) {
-  switch (action.type) {
-    case ACTION.NAVBARSHOWHIDE:
-      console.log(action, state);
-      return (state = { navf: action.nav });
-    case ACTION.BODY_NAV_HIDE:
-      return (state = { lol: "gole" });
-    default:
-      return state;
-  }
-}
+export const MovieState = React.createContext();
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, []);
-
   return (
-    <div className="bg-gray-50 z-20 font-['Ubuntu']">
-      <Router>
-        <Navbar dispatch={dispatch} state={state} />
-        <Gotop />
-        <Routes>
-          <Route path="/Home" element={<Navigate to="/" />} />
-          <Route
-            path="/"
-            element={<Home dispatch={dispatch} state={state} />}
-          />
-          <Route path="/Trending" element={<Trending />} />
-          <Route path="/Movies" element={<Movies />} />
-          <Route path="/Tvshow" element={<Tvshow />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Aboutme" element={<Aboutme />} />
-          <Route path="/Aboutapi" element={<Aboutapi />} />
-        </Routes>
-        <Footer />
-      </Router>
+    <div className={`${state.them ? "bg-gray-800 text-gray-50" : ""} bg-gray-50  font-['Ubuntu']`}>
+      <MovieState.Provider value={{ state, dispatch }}>
+        <Router>
+          <Navbar />
+          <Gotop />
+          <Routes>
+            <Route path="/Home" element={<Navigate to="/" />} />
+            <Route path="/"      element={<Home />} />
+            <Route path="/Trending" element={<Trending />} />
+            <Route path="/Movies" element={<Movies />} />
+            <Route path="/Tvshow" element={<Tvshow />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Aboutme" element={<Aboutme />} />
+            <Route path="/Aboutapi" element={<Aboutapi />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </MovieState.Provider>
     </div>
   );
 };

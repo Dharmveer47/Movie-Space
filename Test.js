@@ -1,6 +1,8 @@
-if([] == false){
-    console.log("hello world");
+let name= undefined;
+let obj = {
+    name:name === undefined ? "lol" :name
 }
+console.log(obj)
 
 
 
@@ -14,28 +16,25 @@ if([] == false){
 
 
 
+const circle = {
+    radius: 10,
+    area: {
+        pi: 3.14,
+        innerRedius: 30
+    }
+};
+const circl = {...circle,color: 'black'};
+console.log(circl);
 
 
 
-// const circle = {
-//     radius: 10,
-//     area: {
-//         pi: 3.14,
-//         innerRedius: 30
-//     }
-// };
 
-// const coloredCircle = {
-//     ...circle,
-//     color: 'black'
-// };
 
-// const circle2 = {...circle}
-// circle2.radius = 20;
-// console.log(circle2 );
-// // console.log(coloredCircle);
-// console.log(circle);
-// if(circle.radius === circle2.radius) {
-//     console.log(true);
-// }
+
+// // console.log(circle2 );
+// // // console.log(coloredCircle);
+// // console.log(circle);
+// // if(circle.radius === circle2.radius) {
+// //     console.log(true);
+// // }
 

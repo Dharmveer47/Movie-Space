@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {MovieState } from "../App";
 import { SiThemoviedatabase } from 'react-icons/si'
 import { FaFacebook, FaGithub, FaImdb, FaInstagram, FaTwitter } from 'react-icons/fa';
 const Footer = () => {
+  const navShow = useContext(MovieState);
+  const state = navShow.state; 
   return (
-    <div className='bg-gradient-to-br to-cyan-100 from-gray-100 mt-6 '>
+    <div className={`${state.them ? "bg-gradient-to-br to-cyan-900 from-gray-900 text-gray-50" : "bg-gradient-to-br to-cyan-100 from-gray-100"}  mt-6 `}>
 
       <div className='flexCB w-[90%] m-auto flex-wrap cursore md:w-[70%] py-5 mdx:justify-center space-x-4'>
 

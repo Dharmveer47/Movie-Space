@@ -10,9 +10,10 @@ import Tailor from "../components/Tailor";
 const Home = () => {
   const bodyHide = useContext(MovieState)
   const dispatch = bodyHide.dispatch;
+  const state = bodyHide.state;
   
   return (
-    <div className="" onClick={()=>{ dispatch({type: ACTION.NAVBARSHOWHIDE, nav:false})}}>
+    <div className={`${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}`} onClick={()=>{ dispatch({type: ACTION.NAVBARSHOWHIDE, nav:false})}}>
       <div className="flexCC " >
        <Heading heading={"Movies Space"}/>
       </div>

@@ -21,7 +21,7 @@
         @apply flex justify-between items-center;/*Combine utilities into a single class*/
     }
     .navMobile01{
-        @apply flex-col bg-slate-400 border  m-auto absolute w-[100%]  mt-14 mr-0  text-gray-700 text-center ;
+        @apply flex-col bg-slate-400   m-auto absolute w-[100%]  mt-14 mr-0  text-gray-700 text-center ;
     }
     .navMobile02{
         @apply  flex-col border absolute w-[100%] top-1/2 h-[80vh] justify-evenly mr-0 bg-gray-100/80 backdrop-blur-sm;

@@ -27,7 +27,7 @@ const MoviesExplen = () => {
   return (
     <div className="flexCB w-full mx-auto mdx:flex-col md:w-[90%] shadow-md rounded-lg backdrop-blur-sm bg-black/20 ">
       <div className="basis-1/4  flexCC flex-col m-2">
-        <img src={Img} />
+        <img src={Img} alt="cardImg"/>
         <h3>Prime Video</h3>
       </div>
       <div className="basis-3/4 m-2 mdx:flexCC flex-col mdx:w-[90%] mx-auto mr-10 mdx:m-0">
@@ -111,7 +111,7 @@ const SingleGener = () => {
   return (
     <>
       <div  className="border-1 bg-gray-50/5 shadow-xl flexCC flex-col mx-3 p-3 cursor-pointer rounded-lg">
-        <img src={Gen} className="rounded-md min-w-[120px] mt-1 "/>
+        <img src={Gen} className="rounded-md min-w-[120px] mt-1 " alt="Gener"/>
         <div className="text-center">
           <h3 className="font-bold mt-1 text-gray-500">Tom Holland</h3>
           <p className="text-sm my-1 px-2"> Peter Parker / Spider Man</p>

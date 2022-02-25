@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React
+// , { useContext, useEffect, useState } 
+from "react";
+// import axios from "axios";
 import Img from "../img/blackWindow.png";
 import { Link } from "react-router-dom";
-import { MovieState } from "../App";
+// import { MovieState } from "../App";
 
-import { ACTION } from "../Reducer/reducer";
+// import { ACTION } from "../Reducer/reducer";
 
 const Card = () => {
   // const showType = "Name";

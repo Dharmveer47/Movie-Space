@@ -5,8 +5,10 @@ import Card from "../components/Card";
 const Tvshow = () => {
   return (
     <div>
-      <Heading heading={"TvShow Space"} />
+     <div className="py-10">
+     <Heading heading={"TvShow Space"} />
       <Search />
+     </div>
       <MovieFilter type={"Trending TvShow"} />
       <Card />
       <NextPrevious />

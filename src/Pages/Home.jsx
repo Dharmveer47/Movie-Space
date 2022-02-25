@@ -1,42 +1,54 @@
-import React,{useContext} from  "react";
+import React, { useContext, useEffect } from "react";
+
 import { BiRightArrow } from "react-icons/bi";
 import MovieFilter from "../components/MovieFilter";
-import Card from "../components/Card"
+import Card from "../components/Card";
 
-import { ACTION } from "../Reducer/reducer";
-import {MovieState} from "../App"
-
+import { ACTION, GetMovies } from "../Reducer/reducer";
+import { MovieState } from "../App";
+import { TRENDING_MOVIES, TRENDING_TVSHOW } from "../Api";
 import Tailor from "../components/Tailor";
+
+
 const Home = () => {
-  const bodyHide = useContext(MovieState)
+  const bodyHide = useContext(MovieState);
   const dispatch = bodyHide.dispatch;
   const state = bodyHide.state;
-  
+  const { MoviesDetails, loading, error } = state;
+
+
   return (
-    <div className={`${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}`} onClick={()=>{ dispatch({type: ACTION.NAVBARSHOWHIDE, nav:false})}}>
-      <div className="flexCC " >
-       <Heading heading={"Movies Space"}/>
+    <div
+      className={`${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}`}
+      onClick={() => {
+        dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: false });
+      }}
+    >
+      <div className="pt-11">
+        <div className="flexCC ">
+          <Heading heading={"Movies Space"} />
+        </div>
+        <Search />
       </div>
-      <Search />
       <MovieInfo des="Review your movies & TvShow" />
       <MovieInfo des="Make your favorite playlist" />
-      <MovieInfo des="Like❤️ ! with IMDB " />      
+      <MovieInfo des="Like❤️ ! with IMDB " />
 
-      <MovieFilter type={"Movies's Today Trending"}/>
-      <Card />
-      <MovieFilter type={"TvShow's Today Trending"}/>
-      <Card />
-      
-      <MovieFilter type={"Free ! Watch on MXplayer"}/>
-      <Card/>
-      <MovieFilter type={"Latest Tailor Movie & Tvshow"}/>
-      <Tailor/>
+      <MovieFilter type={"Movies's Today Trending"} />
+      <Card  showType={TRENDING_MOVIES}  />
+      <MovieFilter type={"TvShow's Today Trending"} />
+      <Card  showType={TRENDING_TVSHOW}/>
+
+      <MovieFilter type={"Free ! Watch on MXplayer"} />
+      <Card showType={TRENDING_TVSHOW} />
+      <Tailor />
+      <MovieFilter type={"Latest Tailor Movie & Tvshow"} />
     </div>
   );
 };
-export const Heading =({heading})=> {
-  return <h1 className="text-6xl smx:text-5xl text-center my-5">{heading}</h1>
-}
+export const Heading = ({ heading }) => {
+  return <h1 className="text-6xl smx:text-5xl text-center mb-5 ">{heading}</h1>;
+};
 export const Search = () => {
   return (
     <div className="flexCC ">
@@ -54,9 +66,13 @@ export const Search = () => {
 
 const MovieInfo = ({ des }) => {
   const navShow = useContext(MovieState);
-  const state = navShow.state; 
+  const state = navShow.state;
   return (
-    <div className={` ${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"} mt-4 w-[70%] m-auto md:w-[30%]`}>
+    <div
+      className={` ${
+        state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"
+      } mt-4 w-[70%] m-auto md:w-[30%]`}
+    >
       <div className="items-center flex ">
         <BiRightArrow fill="pink" />
         <div className="ml-1">{des}</div>
@@ -64,7 +80,5 @@ const MovieInfo = ({ des }) => {
     </div>
   );
 };
-
-
 
 export default Home;

@@ -17,16 +17,28 @@ import Tvshow from "./Pages/Tvshow";
 import Login from "./Pages/Login";
 import Aboutme from "./Pages/Aboutme";
 import Aboutapi from "./Pages/Aboutapi";
+import MoviesExple from "./components/MoviesExple";
 
 export const MovieState = React.createContext();
-
+const initialState = {
+  MoviesDetails: '',
+  MoviesResults: [],
+  MoviesCurrentPage:'',
+  MovieTotalPage: '',
+  loading: false,
+  error: null,
+  navf: false,
+  them: false
+};
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, []);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { MoviesDetails, loading, error } = state;
   return (
     <div className={`${state.them ? "bg-gradient-to-br to-cyan-900 from-gray-900 text-gray-50"  : "bg-gray-50"}   font-['Ubuntu']`}>
       <MovieState.Provider value={{ state, dispatch }}>
         <Router>
           <Navbar />
+          
           <Gotop />
           <Routes>
             <Route path="/Home" element={<Navigate to="/" />} />
@@ -37,6 +49,7 @@ const App = () => {
             <Route path="/Login" element={<Login />} />
             <Route path="/Aboutme" element={<Aboutme />} />
             <Route path="/Aboutapi" element={<Aboutapi />} />
+            <Route path="/MoviesExple" element={<MoviesExple/>} />
           </Routes>
           <Footer />
         </Router>

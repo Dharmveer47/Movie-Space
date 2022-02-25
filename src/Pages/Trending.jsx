@@ -4,6 +4,8 @@ import Card from '../components/Card'
 import Tailor from '../components/Tailor';
 const Trending = () => {
   return <div>
+    <MovieFilter type={"Latest Tailor "}/>
+    <Tailor/>
     <FilterTranding type={"Movies & Tvshow"}/>
     <Card/>
     <NextPrevious/>
@@ -13,8 +15,6 @@ const Trending = () => {
     <FilterTranding type={"TvShow"}/>
     <Card/>
     <NextPrevious/>
-    <MovieFilter type={"Latest Tailor "}/>
-    <Tailor/>
   </div>;
 };
 

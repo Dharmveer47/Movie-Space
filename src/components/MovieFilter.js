@@ -1,3 +1,5 @@
+import React, { useContext } from 'react'
+import {MovieState} from "../App"
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { GiPreviousButton, GiNextButton } from 'react-icons/gi';
 
@@ -35,12 +37,14 @@ const FilterTranding = ({ type }) => {
 }
 
 const NextPrevious = ({page = 20}) => {
+  const bgDark = useContext(MovieState)
+  const state = bgDark.state;
   return (
     <div className=" flex items-center justify-evenly w-[90%]  mx-auto mb-10 h-8 bg-gradient-to-r from-gray-100 to-gray-500 rounded-2xl my-2">
          <h1 className="font-bold text-gray-800 text-lg mdx:text-sm truncate">Total Pages : {page}</h1>
         <div className='flexCC'>
           <button className='flexCC  active:text-gray-600 hover:text-white cursor-pointer  ' > <GiPreviousButton className='w-6 h-6'/> </button>
-          <div className='px-2 mx-1 rounded-md bg-gray-100'>01</div>
+          <div className={`${state.them ? "bg-gray-800 text-gray-50" : "text-gray-900 bg-gray-500"} px-2 mx-1 rounded-md font-bold `}>01</div>
           <button className='flexCC active:text-gray-700 hover:text-white cursor-pointer'> <GiNextButton className='w-6 h-6' />  </button>
         </div>
     </div>

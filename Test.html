@@ -7,44 +7,33 @@
     <script>
       const url =
         "https://api.themoviedb.org/3/movie/top_rated?api_key=446cac9a81452603fb3694e031c2c458&language=en-US&adult=true&page=1";
-        const url2 =
-        "https://api.themoviedb.org/3/movie/458363?api_key=446cac9a81452603fb3694e031c2c458&language=en-US&page=2";
-        const url3 =
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=446cac9a81452603fb3694e031c2c458&language=en-US&page=3";
-      const getDetail =
-        "https://api.themoviedb.org/3/tv/107588?api_key=446cac9a81452603fb3694e031c2c458&language=en-US";
 
-        fetch(url)
+      fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            let mId = [];
-            for(let i = 0; i < data.results.length; i++){
-                <m></m>Id.push(data.results[i].id);
+          x = data.results;
+          let z = 0;
+          let arr = [];
+          // console.log(x);
+          x.map((y) => {
+            let a = [y];
+            z++;
+            if (z > 10) {
+              arr = [...y, y];
+            } else {
+              // console.log({...y,y});
             }
-            fetch(url2)
-            .then((response) => response.json())
-            .then((data) =>{
-              console.log(data);
-            })
-          
-            
-            // console.log(mId);
-            for(let i = 0; i < mId.length; i++){
-                fetch(`https://api.themoviedb.org/3/movie/${mId[i]}?api_key=446cac9a81452603fb3694e031c2c458&language=en-US`)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data.homepage);
-                })
-            }
-            
-        })
-        .catch((error) => console.log(error));
-      fetch(getDetail)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data.networks);
-        })
-        .catch((error) => console.log(error));
+          });
+          console.log(arr);
+        });
+      let a = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+
+      let arrays = [],
+        size = 2;
+
+      while (a.length > 0) arrays.push(a.splice(0, size));
+
+      console.log(arrays);
     </script>
   </body>
 </html>

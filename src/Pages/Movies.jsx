@@ -6,8 +6,10 @@ import Card from "../components/Card"
 const Movies = () => {
   return (
     <div>
+      <div className="py-10">
       <Heading heading={"Movies Space"}/>
       <Search />
+      </div>
       <MovieFilter type={"Trending Movies"}/>
       <Card/>
       <NextPrevious/>

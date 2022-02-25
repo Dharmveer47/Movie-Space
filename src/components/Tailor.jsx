@@ -1,6 +1,5 @@
 import React from "react";
 import { AiFillPlayCircle } from 'react-icons/ai'
-
 const Tailor = () => {
 
   return (

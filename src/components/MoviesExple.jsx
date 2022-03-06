@@ -1,4 +1,4 @@
-import React,{ useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Tailor from "./Tailor";
 import MovieFilter from "./MovieFilter";
 import { FcRating } from "react-icons/fc";
@@ -6,17 +6,47 @@ import { BsDot } from "react-icons/bs";
 import Img from "../img/blackWindow.png";
 import Card from "./Card";
 import { MovieState } from "../App";
+import { useParams } from "react-router-dom";
+import { API_KEY } from "../Api";
+import axios from "axios";
+import { Geners } from './Geners/Geners';
+
 
 const MoviesExple = () => {
+  const { type, id } = useParams();
+  const [show, setShow] = useState([]);
+
+
+  const ShowUrl = `https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}&language=en-US`;
+  const getVideo = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${API_KEY}&language=en-US`
+  const geners = `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${API_KEY}&language=en-US`
+  const relatedShow = `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`
+  // const imgUrl = `https://image.tmdb.org/t/p/w780/zcWIIS2SMGpQAwjCCzKjmZ6kJ0P.jpg`
+
+  useEffect(() => {
+    GetMovies(ShowUrl);
+  }, []);
+
+  const GetMovies = async (urlMovie) => {
+    let response = await axios.get(urlMovie);
+    if (response.status === 200) {
+      setShow(response.data);
+    } else {
+      console.log("error");
+    }
+    return;
+  };
+  // console.log(relatedShow);
 
   return (
     <>
-      <MoviesExplen />
-      <MovieFilter type={"Tailors : Black Widow (2021) "} />
-      <Tailor />
-      <Geners />
+      <MoviesExplen data={show}/>
+      <MovieFilter type={`Tailors : ${show.original_title} `} />
+      <Tailor getVideo={getVideo} />
+      <Geners geners={geners} />
       <MovieFilter type={"Related Movies"} />
-      <Card/>
+      <Card  showType={relatedShow}  />
+      
     </>
   );
 };
@@ -27,7 +57,7 @@ const MoviesExplen = () => {
   return (
     <div className="flexCB w-full mx-auto mdx:flex-col md:w-[90%] shadow-md rounded-lg backdrop-blur-sm bg-black/20 ">
       <div className="basis-1/4  flexCC flex-col m-2">
-        <img src={Img} alt="cardImg"/>
+        <img src={Img} alt="cardImg" />
         <h3>Prime Video</h3>
       </div>
       <div className="basis-3/4 m-2 mdx:flexCC flex-col mdx:w-[90%] mx-auto mr-10 mdx:m-0">
@@ -51,73 +81,43 @@ const MoviesExplen = () => {
           </p>
         </div>
 
-        <div 
-        className={`${state.them ? " text-gray-50" : "text-gray-700 italic "}`}
+        <div
+          className={`${
+            state.them ? " text-gray-50" : "text-gray-700 italic "
+          }`}
         >
           <p>Her world, Her Secrts, Her Legacy</p>
         </div>
         <div className="mdx:flexCC flex-col w-4/6  mdx:w-auto">
           <h3 className="font-bold my-5">Overview</h3>
-          <p  className={`${state.them ? " text-gray-50" : "text-gray-700 italic "}`}>
+          <p
+            className={`${
+              state.them ? " text-gray-50" : "text-gray-700 italic "
+            }`}
+          >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
             a! Officiis vitae, quisquam quo recusandae minima est cumque? Earum,
             vero officia. Accusantium, suscipit. Ad, optio?
           </p>
         </div>
-        <table className="w-[50%] text-center my-4">
-          <tr className="">
-            <th className="">Compay Director</th>
-            <th className="">Lorem ipsum</th>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-          </tr>
-          <tr>
-            <td>Alfreds </td>
-            <td> Anders</td>
-          </tr>
-        </table>
+        <div className="w-[80%] text-center  my-4 whitespace-nowrap">
+          <div className="font-bold flex justify-around">
+            <div className="">Compay Director </div>
+            <div className="">Lorem ipsum</div>
+          </div>
+          <div className=" flex justify-around">
+            <div>Alfreds Futterkiste</div>
+            <div>Maria Anders</div>
+          </div>
+          <div className=" flex justify-around">
+            <div>Alfreds </div>
+            <div> Anders</div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-const Geners = () => {
-  return (
-    <>
-      <div className=" flex items-center m-2 pb-2 overflow-scroll overflow-y-hidden ">
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-        <SingleGener />
-      </div>
-    </>
-  );
-};
-const SingleGener = () => {
-  const Gen =
-    "http://image.tmdb.org/t/p/w138_and_h175_face/2qhIDp44cAqP2clOgt2afQI07X8.jpg";
 
-  return (
-    <>
-      <div  className="border-1 bg-gray-50/5 shadow-xl flexCC flex-col mx-3 p-3 cursor-pointer rounded-lg">
-        <img src={Gen} className="rounded-md min-w-[120px] mt-1 " alt="Gener"/>
-        <div className="text-center">
-          <h3 className="font-bold mt-1 text-gray-500">Tom Holland</h3>
-          <p className="text-sm my-1 px-2"> Peter Parker / Spider Man</p>
-        </div>
-      </div>
-    </>
-  );
-};
 export default MoviesExple;

@@ -15,14 +15,12 @@ const Home = () => {
   const dispatch = bodyHide.dispatch;
   const state = bodyHide.state;
   const { MoviesDetails, loading, error } = state;
-
-
   return (
     <div
       className={`${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}`}
-      onClick={() => {
-        dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: false });
-      }}
+      // onClick={() => {
+      //   dispatch({ type: ACTION.NAVBARSHOWHIDE, nav: false });
+      // }}
     >
       <div className="pt-11">
         <div className="flexCC ">
@@ -30,19 +28,19 @@ const Home = () => {
         </div>
         <Search />
       </div>
-      <MovieInfo des="Review your movies & TvShow" />
+      {/* <MovieInfo des="Review your movies & TvShow" />
       <MovieInfo des="Make your favorite playlist" />
-      <MovieInfo des="Like❤️ ! with IMDB " />
+      <MovieInfo des="Like❤️ ! with IMDB " /> */}
 
       <MovieFilter type={"Movies's Today Trending"} />
       <Card  showType={TRENDING_MOVIES}  />
-      <MovieFilter type={"TvShow's Today Trending"} />
+      {/* <MovieFilter type={"TvShow's Today Trending"} />
       <Card  showType={TRENDING_TVSHOW}/>
 
       <MovieFilter type={"Free ! Watch on MXplayer"} />
       <Card showType={TRENDING_TVSHOW} />
-      <Tailor />
       <MovieFilter type={"Latest Tailor Movie & Tvshow"} />
+      <Tailor /> */}
     </div>
   );
 };
@@ -64,21 +62,21 @@ export const Search = () => {
   );
 };
 
-const MovieInfo = ({ des }) => {
-  const navShow = useContext(MovieState);
-  const state = navShow.state;
-  return (
-    <div
-      className={` ${
-        state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"
-      } mt-4 w-[70%] m-auto md:w-[30%]`}
-    >
-      <div className="items-center flex ">
-        <BiRightArrow fill="pink" />
-        <div className="ml-1">{des}</div>
-      </div>
-    </div>
-  );
-};
+// const MovieInfo = ({ des }) => {
+//   const navShow = useContext(MovieState);
+//   const state = navShow.state;
+//   return (
+//     <div
+//       className={` ${
+//         state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"
+//       } mt-4 w-[70%] m-auto md:w-[30%]`}
+//     >
+//       <div className="items-center flex ">
+//         <BiRightArrow fill="pink" />
+//         <div className="ml-1">{des}</div>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default Home;

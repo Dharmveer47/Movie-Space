@@ -1,4 +1,4 @@
-import { API_URL } from "../Api";
+// import { API_URL } from "../Api";
 
 export const ACTION = {
   NAVBARSHOWHIDE: "trueFalse",
@@ -17,7 +17,7 @@ export const reducer = (state, action) => {
       return { ...state, them: action.them };
 
     case ACTION.CALL_API: {
-      return { ...state, loading: true };
+      return { ...state, loading: action.loading };
     }
     case ACTION.SUCCESS: {
       return {

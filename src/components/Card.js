@@ -4,13 +4,18 @@ import { Link } from "react-router-dom";
 import { IMAGE_BASE_URL_CARD } from "../Api";
 import { NextPrevious } from "./MovieFilter";
 
-const Card = ({ showType = "initial" }) => {
+const Card = ({ showType = "initial",related }) => {
   const [MoviInfo, setMoviInfo] = useState([]);
   const [total_pages, settotal_pages] = useState([]);
-
+  const [next, setNext] = useState(1);
+  
+  let showUrl = `${showType}${next}`
+  console.log(showUrl);
+  
+  
   useEffect(() => {
-    GetMovies(showType);
-  }, []);
+    GetMovies(showUrl);
+  }, [showUrl]);
 
   const GetMovies = async (urlMovie) => {
     let response = await axios.get(urlMovie);
@@ -53,25 +58,26 @@ const Card = ({ showType = "initial" }) => {
     <>
       <div className="flexCB z-10 w-[90%] mx-auto  overflow-scroll overflow-y-hidden ">
         {data.map((item, index) => {
-          return <SingleCard data={item} key={index} />;
+          return <SingleCard data={item} key={index} related={related}/>;
         })}
       </div>
-      <NextPrevious page={total_pages} />
+      <NextPrevious page={total_pages} next={next} setNext={setNext}/>
     </>
   );
 };
 
-const SingleCard = ({ data }) => {
+const SingleCard = ({ data,related }) => {
+  console.log(data);
   return (
     <>
       <div className="pb-8">
         <div className="m-3 my-5">
-          <Link to={`/MoviesExple/${data[0].media_type}/${data[0].id}`}>
+          <Link to={`${related ? `/MoviesExple` : `/MoviesExple/${data[0].media_type}/${data[0].id}`} `}>
             <SingleCard01 data={data[0]} />
           </Link>
         </div>
         <div className="m-3 my-5">
-          <Link to={`/MoviesExple/${data[1].media_type}/${data[1].id}`}>
+        <Link to={`${related ? `/MoviesExple` : `/MoviesExple/${data[1].media_type}/${data[1].id}`} `}>
             <SingleCard02 data={data[1]} />
           </Link>
         </div>

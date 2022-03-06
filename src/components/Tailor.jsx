@@ -17,7 +17,7 @@ const Tailor = ({ getVideo = "" }) => {
     }
     return;
   };
-  console.log(video);
+  // console.log(video);
 
   return (
     <>

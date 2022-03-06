@@ -20,7 +20,7 @@ const MoviesExple = () => {
   const ShowUrl = `https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}&language=en-US`;
   const getVideo = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${API_KEY}&language=en-US`
   const geners = `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${API_KEY}&language=en-US`
-  const relatedShow = `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`
+  const relatedShow = `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${API_KEY}&language=en-US&page=`
   // const imgUrl = `https://image.tmdb.org/t/p/w780/zcWIIS2SMGpQAwjCCzKjmZ6kJ0P.jpg`
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const MoviesExple = () => {
       <Tailor getVideo={getVideo} />
       <Geners geners={geners} />
       <MovieFilter type={"Related Movies"} />
-      <Card  showType={relatedShow}  />
+      <Card  showType={relatedShow}  related={true}/>
       
     </>
   );

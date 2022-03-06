@@ -33,7 +33,7 @@ const Home = () => {
       <MovieInfo des="Like❤️ ! with IMDB " /> */}
 
       <MovieFilter type={"Movies's Today Trending"} />
-      <Card  showType={TRENDING_MOVIES}  />
+      <Card  showType={TRENDING_MOVIES} related={false} />
       {/* <MovieFilter type={"TvShow's Today Trending"} />
       <Card  showType={TRENDING_TVSHOW}/>
 

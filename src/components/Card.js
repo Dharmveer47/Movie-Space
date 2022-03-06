@@ -10,7 +10,6 @@ const Card = ({ showType = "initial",related }) => {
   const [next, setNext] = useState(1);
   
   let showUrl = `${showType}${next}`
-  console.log(showUrl);
   
   
   useEffect(() => {
@@ -66,18 +65,17 @@ const Card = ({ showType = "initial",related }) => {
   );
 };
 
-const SingleCard = ({ data,related }) => {
-  console.log(data);
+const SingleCard = ({ data }) => {
   return (
     <>
       <div className="pb-8">
         <div className="m-3 my-5">
-          <Link to={`${related ? `/MoviesExple` : `/MoviesExple/${data[0].media_type}/${data[0].id}`} `}>
+          <Link to={`/MoviesExple/${data[0].media_type ? data[0].media_type : "movie"}/${data[0].id}`}>
             <SingleCard01 data={data[0]} />
           </Link>
         </div>
         <div className="m-3 my-5">
-        <Link to={`${related ? `/MoviesExple` : `/MoviesExple/${data[1].media_type}/${data[1].id}`} `}>
+        <Link to={`/MoviesExple/${data[1].media_type ? data[1].media_type : "movie"}/${data[1].id} `}>
             <SingleCard02 data={data[1]} />
           </Link>
         </div>

@@ -32,7 +32,7 @@ const LOGIN_URL = `${API_URL}authentication/token/validate_with_login?api_key=${
 
 const SESSION_ID_URL = `${API_URL}authentication/session/new?api_key=${API_KEY}`;
 
-const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/5P8SmMzSNYikXpxil6BYzJ16611.jpg';
+const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/w154';
 export const IMAGE_BASE_URL_CARD = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
 // Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280';

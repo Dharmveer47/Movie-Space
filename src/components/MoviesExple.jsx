@@ -25,7 +25,7 @@ const MoviesExple = () => {
 
   useEffect(() => {
     GetMovies(ShowUrl);
-  }, []);
+  }, [ShowUrl]);
 
   const GetMovies = async (urlMovie) => {
     let response = await axios.get(urlMovie);
@@ -41,32 +41,34 @@ const MoviesExple = () => {
   return (
     <>
       <MoviesExplen data={show}/>
-      <MovieFilter type={`Tailors : ${show.original_title} `} />
+      <MovieFilter type={`Tailors : ${show.title} `} />
       <Tailor getVideo={getVideo} />
       <Geners geners={geners} />
       <MovieFilter type={"Related Movies"} />
-      <Card  showType={relatedShow}  related={true}/>
+      <Card  showType={relatedShow}  related={true} type={type}/>
       
     </>
   );
 };
 
-const MoviesExplen = () => {
+const MoviesExplen = ({data}) => {
+  console.log(data);
   const them = useContext(MovieState);
   const state = them.state;
+  let PosterImg = `http://image.tmdb.org/t/p/w154${data.poster_path}`
   return (
     <div className="flexCB w-full mx-auto mdx:flex-col md:w-[90%] shadow-md rounded-lg backdrop-blur-sm bg-black/20 ">
       <div className="basis-1/4  flexCC flex-col m-2">
-        <img src={Img} alt="cardImg" />
+        <img src={PosterImg} alt="cardImg" />
         <h3>Prime Video</h3>
       </div>
       <div className="basis-3/4 m-2 mdx:flexCC flex-col mdx:w-[90%] mx-auto mr-10 mdx:m-0">
         <h1 className=" text-4xl text-center font-bold my-3">
-          Black Widow (2021)
+          {data.title}
         </h1>
         <div className="flexCB w-60 mdx:mx-auto smx:flex-col smx:w-auto">
           <p>PG-13</p>
-          <p>Air date : 02/02/2022</p>
+          <p>Air date : {data.release_date}</p>
         </div>
         <div>
           <div className="flex items-center space-x-1 mdx:justify-center">
@@ -74,10 +76,10 @@ const MoviesExplen = () => {
             <FcRating />
             <p>6.8</p>
           </div>
-          <p>Status : Relesed</p>
+          <p>Status : {data.status}</p>
           <p>Action, Adventue, Thriller, Science Frication</p>
           <p className="flex items-center mdx:justify-center">
-            Total Durection : <BsDot className="w-10 h-10" /> 2h 21m
+            Total Durection : <BsDot className="w-10 h-10" /> {data.runtime}m
           </p>
         </div>
 
@@ -86,7 +88,7 @@ const MoviesExplen = () => {
             state.them ? " text-gray-50" : "text-gray-700 italic "
           }`}
         >
-          <p>Her world, Her Secrts, Her Legacy</p>
+          <p>{data.tagline}</p>
         </div>
         <div className="mdx:flexCC flex-col w-4/6  mdx:w-auto">
           <h3 className="font-bold my-5">Overview</h3>
@@ -95,9 +97,7 @@ const MoviesExplen = () => {
               state.them ? " text-gray-50" : "text-gray-700 italic "
             }`}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
-            a! Officiis vitae, quisquam quo recusandae minima est cumque? Earum,
-            vero officia. Accusantium, suscipit. Ad, optio?
+            {data.overview}
           </p>
         </div>
         <div className="w-[80%] text-center  my-4 whitespace-nowrap">

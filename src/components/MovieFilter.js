@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react'
+import React, { useContext } from 'react'
 import {MovieState} from "../App"
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { GiPreviousButton, GiNextButton } from 'react-icons/gi';

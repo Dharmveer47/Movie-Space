@@ -68,7 +68,7 @@ const Card = ({ showType = "initial",related,type }) => {
 const SingleCard = ({ data,type }) => {
   return (
     <>
-      <div className="pb-8">
+      <div className="pb-8" onClick={()=> window.scrollTo(0, 0)} >
         <div className="m-3 my-5">
           <Link to={`/MoviesExple/${data[0].media_type ? data[0].media_type : type}/${data[0].id}`}>
             <SingleCard01 data={data[0]} />

@@ -19,7 +19,7 @@ const Tailor = ({ getVideo = "" }) => {
   };
   // console.log(video);
   // https://youtu.be/k_N9pU4FMOs
-
+  // const imgUrl = `https://image.tmdb.org/t/p/w780/zcWIIS2SMGpQAwjCCzKjmZ6kJ0P.jpg`
   return (
     <>
       <div

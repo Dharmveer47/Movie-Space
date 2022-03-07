@@ -1,20 +1,20 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { BiRightArrow } from "react-icons/bi";
 import MovieFilter from "../components/MovieFilter";
 import Card from "../components/Card";
 
-import { ACTION, GetMovies } from "../Reducer/reducer";
+// import { ACTION, GetMovies } from "../Reducer/reducer";
 import { MovieState } from "../App";
 import { TRENDING_MOVIES, TRENDING_TVSHOW } from "../Api";
-import Tailor from "../components/Tailor";
+// import Tailor from "../components/Tailor";
 
 
 const Home = () => {
   const bodyHide = useContext(MovieState);
-  const dispatch = bodyHide.dispatch;
+  // const dispatch = bodyHide.dispatch;
   const state = bodyHide.state;
-  const { MoviesDetails, loading, error } = state;
+  // const { MoviesDetails, loading, error } = state;
   return (
     <div
       className={`${state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"}`}
@@ -28,19 +28,19 @@ const Home = () => {
         </div>
         <Search />
       </div>
-      {/* <MovieInfo des="Review your movies & TvShow" />
+      <MovieInfo des="Review your movies & TvShow" />
       <MovieInfo des="Make your favorite playlist" />
-      <MovieInfo des="Like❤️ ! with IMDB " /> */}
+      <MovieInfo des="Like❤️ ! with IMDB " />
 
       <MovieFilter type={"Movies's Today Trending"} />
-      <Card  showType={TRENDING_MOVIES} related={false} />
-      {/* <MovieFilter type={"TvShow's Today Trending"} />
-      <Card  showType={TRENDING_TVSHOW}/>
+      <Card  showType={TRENDING_MOVIES} type='movie' related={false} />
+      <MovieFilter type={"TvShow's Today Trending"} />
+      <Card  showType={TRENDING_TVSHOW} type="tv"/>
 
       <MovieFilter type={"Free ! Watch on MXplayer"} />
-      <Card showType={TRENDING_TVSHOW} />
+      <Card showType={TRENDING_MOVIES } type="movie" />
       <MovieFilter type={"Latest Tailor Movie & Tvshow"} />
-      <Tailor /> */}
+      {/* <Tailor /> */}
     </div>
   );
 };
@@ -62,21 +62,21 @@ export const Search = () => {
   );
 };
 
-// const MovieInfo = ({ des }) => {
-//   const navShow = useContext(MovieState);
-//   const state = navShow.state;
-//   return (
-//     <div
-//       className={` ${
-//         state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"
-//       } mt-4 w-[70%] m-auto md:w-[30%]`}
-//     >
-//       <div className="items-center flex ">
-//         <BiRightArrow fill="pink" />
-//         <div className="ml-1">{des}</div>
-//       </div>
-//     </div>
-//   );
-// };
+const MovieInfo = ({ des }) => {
+  const navShow = useContext(MovieState);
+  const state = navShow.state;
+  return (
+    <div
+      className={` ${
+        state.them ? "bg-gray-800 text-gray-50" : "text-gray-800"
+      } mt-4 w-[70%] m-auto md:w-[30%]`}
+    >
+      <div className="items-center flex ">
+        <BiRightArrow fill="pink" />
+        <div className="ml-1">{des}</div>
+      </div>
+    </div>
+  );
+};
 
 export default Home;

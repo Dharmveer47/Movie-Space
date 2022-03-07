@@ -18,7 +18,7 @@ export const TIME_WINDIW = {
   WEEK : 'week'
 }
 export const TRENDING_MOVIES = `${API_URL}trending/${MEDIA_TYPE.MOVIE}/${TIME_WINDIW.DAY}?api_key=${API_KEY}&language=en-US&page=`
-export const TRENDING_TVSHOW = `${API_URL}trending/${MEDIA_TYPE.TV}/${TIME_WINDIW.DAY}?api_key=${API_KEY}`
+export const TRENDING_TVSHOW = `${API_URL}trending/${MEDIA_TYPE.TV}/${TIME_WINDIW.DAY}?api_key=${API_KEY}&language=en-US&page=`
 //Latest Movies 
 const LATEST_MOVIES = `${API_URL}movie/latest?api_key=${API_KEY}&language=en-US`
 //Upcoming Movies

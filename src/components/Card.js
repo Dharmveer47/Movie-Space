@@ -33,7 +33,7 @@ const Card = ({ showType = "initial",related,type }) => {
     );
   };
 
-  if (MoviInfo.length === 0) {
+  if (MoviInfo.length === 0 || MoviInfo === undefined) {
     return (
       <>
         <div className="flex overflow-x-scroll">

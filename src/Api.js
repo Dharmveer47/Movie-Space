@@ -20,11 +20,16 @@ export const TIME_WINDIW = {
 export const TRENDING_MOVIES = `${API_URL}trending/${MEDIA_TYPE.MOVIE}/${TIME_WINDIW.DAY}?api_key=${API_KEY}&language=en-US&page=`
 export const TRENDING_TVSHOW = `${API_URL}trending/${MEDIA_TYPE.TV}/${TIME_WINDIW.DAY}?api_key=${API_KEY}&language=en-US&page=`
 //Latest Movies 
-const LATEST_MOVIES = `${API_URL}movie/latest?api_key=${API_KEY}&language=en-US`
+const LATEST_MOVIES = `${API_URL}movie/latest?api_key=${API_KEY}&language=en-US&page=`
 //Upcoming Movies
 const Upcoming_Movies = `${API_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=`
 const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=`;
+
+
+export const LATEST_TV = `${API_URL}tv/latest?api_key=${API_KEY}&language=en-US&page=`
+export const Upcoming_TvShow = `${API_URL}tv/upcoming?api_key=${API_KEY}&language=en-US&page=`
+export const POPULAR_BASE_URL_Tv = `${API_URL}tv/popular?api_key=${API_KEY}&language=en-US&page=`;
 
 // For login and voting
 const REQUEST_TOKEN_URL = `${API_URL}authentication/token/new?api_key=${API_KEY}`;

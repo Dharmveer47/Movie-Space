@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { API_KEY } from "../Api";
 import { BiRightArrow } from "react-icons/bi";
 import MovieFilter from "../components/MovieFilter";
@@ -58,15 +58,16 @@ export const Search = ({  setSearchUrl,type }) => {
   // console.log(searchOpt);
   let fulUrl = searchOpt === "" ? [] : SEARCH_BASE_URL + searchOpt;
 
-  useEffect(() => {
-    setSearchUrl(fulUrl)
-  }, [search]);
+  // useEffect(() => {
+  //   setSearchUrl(fulUrl)
+  // }, [search]);
   return (
     <form
       className="flexCC "
       onSubmit={(e) => {
         e.preventDefault();
         setSearch(input);
+        setSearchUrl(fulUrl)
       }}
     >
       <input

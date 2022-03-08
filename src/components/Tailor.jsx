@@ -17,14 +17,12 @@ const Tailor = ({ getVideo = "" }) => {
     }
     return;
   };
-  // console.log(video);
-  // https://youtu.be/k_N9pU4FMOs
-  // const imgUrl = `https://image.tmdb.org/t/p/w780/zcWIIS2SMGpQAwjCCzKjmZ6kJ0P.jpg`
+
   return (
     <>
       <div
-        className="flex items-center  bg-Poster bg-blend-exclusion 
-      bg-gray-600/80  bg-center overflow-scroll overflow-y-hidden mt-10 backdrop-blur-md"
+        className={`flex items-center   bg-blend-exclusion  bg-gradient-to-r from-cyan-500/20 to-blue-500/20
+      bg-center overflow-scroll overflow-y-hidden mt-10 backdrop-blur-md`}
       >
         {video.map((d) => (
           <TailorCard key={d.key} data={d} />
@@ -41,8 +39,9 @@ const TailorCard = ({ data }) => {
       <div className="my-10 border-2  relative  rounded-xl shadow-md group mx-2 ">
         <iframe
           title={data.name}
-        className="min-w-[420px] min-h-[354px] rounded-xl  group-hover:transition mdx:min-w-[200px] "
-         src={`https://www.youtube.com/embed/${data.key}`} />
+          className="min-w-[420px] min-h-[354px] rounded-xl  group-hover:transition mdx:min-w-[200px] "
+          src={`https://www.youtube.com/embed/${data.key}`}
+        />
         {/* <img
           src={img300200}
           alt=""

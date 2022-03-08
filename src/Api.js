@@ -22,8 +22,9 @@ export const TRENDING_TVSHOW = `${API_URL}trending/${MEDIA_TYPE.TV}/${TIME_WINDI
 //Latest Movies 
 const LATEST_MOVIES = `${API_URL}movie/latest?api_key=${API_KEY}&language=en-US&page=`
 //Upcoming Movies
+export const TOP_RATED = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=`
 const Upcoming_Movies = `${API_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=`
-const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
+const SEARCH_BASE_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=`;
 
 

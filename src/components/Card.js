@@ -3,15 +3,16 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { IMAGE_BASE_URL_CARD } from "../Api";
 import { NextPrevious } from "./MovieFilter";
+import Poster from "../img/ProfileDrawer.png";
 
-const Card = ({ showType = "initial",related,type }) => {
+const Card = ({ showType = "initial", type, search }) => {
   const [MoviInfo, setMoviInfo] = useState([]);
   const [total_pages, settotal_pages] = useState([]);
   const [next, setNext] = useState(1);
-  
-  let showUrl = `${showType}${next}`
-  
-  
+
+  let showUrl = `${search ? showType : showType + next}`;
+  // console.log(showUrl);
+
   useEffect(() => {
     GetMovies(showUrl);
   }, [showUrl]);
@@ -32,11 +33,16 @@ const Card = ({ showType = "initial",related,type }) => {
       <div className="h-52 relative m-2 my-3 sha dow-lg  rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse border-4  min-w-[200px]"></div>
     );
   };
+  console.log(MoviInfo)
 
-  if (MoviInfo.length === 0 || MoviInfo === undefined) {
+  if (MoviInfo.length === 0 || MoviInfo === 'undefined') {
     return (
       <>
-        <div className="flex overflow-x-scroll">
+        <div
+          className={`${
+            showType.length === 0 ? "hidden" : "flex overflow-x-scroll"
+          }`}
+        >
           <Loading />
           <Loading />
           <Loading />
@@ -57,25 +63,38 @@ const Card = ({ showType = "initial",related,type }) => {
     <>
       <div className="flexCB z-10 w-[90%] mx-auto  overflow-scroll overflow-y-hidden ">
         {data.map((item, index) => {
-          return <SingleCard data={item} key={index} type={type}/>;
+          return <SingleCard data={item} key={index} type={type} />;
         })}
       </div>
-      <NextPrevious page={total_pages} next={next} setNext={setNext}/>
+      <NextPrevious
+        search={search}
+        page={total_pages}
+        next={next}
+        setNext={setNext}
+      />
     </>
   );
 };
 
-const SingleCard = ({ data,type }) => {
+const SingleCard = ({ data, type }) => {
   return (
     <>
-      <div className="pb-8" onClick={()=> window.scrollTo(0, 0)} >
+      <div className="pb-8" onClick={() => window.scrollTo(0, 0)}>
         <div className="m-3 my-5">
-          <Link to={`/MoviesExple/${data[0].media_type ? data[0].media_type : type}/${data[0].id}`}>
+          <Link
+            to={`/MoviesExple/${
+              data[0].media_type ? data[0].media_type : type
+            }/${data[0].id}`}
+          >
             <SingleCard01 data={data[0]} />
           </Link>
         </div>
         <div className="m-3 my-5">
-        <Link to={`/MoviesExple/${data[1].media_type ? data[1].media_type : type}/${data[1].id} `}>
+          <Link
+            to={`/MoviesExple/${
+              data[1].media_type ? data[1].media_type : type
+            }/${data[1].id} `}
+          >
             <SingleCard02 data={data[1]} />
           </Link>
         </div>
@@ -83,11 +102,13 @@ const SingleCard = ({ data,type }) => {
     </>
   );
 };
+
 const SingleCard01 = ({ data }) => {
+  let cardImg = `${IMAGE_BASE_URL_CARD}${data.poster_path}`;
   return (
     <div className="relative ">
       <img
-        src={`${IMAGE_BASE_URL_CARD}${data.poster_path}`}
+        src={`${cardImg === null ? Poster : cardImg}`}
         alt=""
         className="mdx:min-w-[100px]  h-auto min-w-[160px]   rounded-md shadow-lg transition duration-500"
       />
@@ -98,10 +119,11 @@ const SingleCard01 = ({ data }) => {
   );
 };
 const SingleCard02 = ({ data }) => {
+  let cardImg = `${IMAGE_BASE_URL_CARD}${data.poster_path}`;
   return (
     <div className="relative">
       <img
-        src={`${IMAGE_BASE_URL_CARD}${data.poster_path}`}
+        src={`${cardImg === null ? Poster : cardImg}`}
         alt=""
         className="mdx:min-w-[100px] h-auto min-w-[160px]  rounded-md shadow-lg"
       />

@@ -34,13 +34,13 @@ const Navbar = () => {
             links={"Home"} 
             state={state}
           />
-          <NavLink
+          {/* <NavLink
             setNavShowHide={setNavShowHide}
             navShowHide={navShowHide}
             links={"Trending"}
             state={state}
 
-          />
+          /> */}
           <NavLink
             setNavShowHide={setNavShowHide}
             navShowHide={navShowHide}

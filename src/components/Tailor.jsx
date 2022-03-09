@@ -3,6 +3,7 @@ import axios from "axios";
 // import { AiFillPlayCircle } from "react-icons/ai";
 
 const Tailor = ({ getVideo = "" }) => {
+
   const [video, setVideo] = useState([]);
   useEffect(() => {
     GetMovies(getVideo);
@@ -17,6 +18,7 @@ const Tailor = ({ getVideo = "" }) => {
     }
     return;
   };
+  console.log(video);
 
   return (
     <>

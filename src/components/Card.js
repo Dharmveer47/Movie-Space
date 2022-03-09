@@ -33,7 +33,7 @@ const Card = ({ showType = "initial", type, search }) => {
       <div className="h-52 relative m-2 my-3 sha dow-lg  rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse border-4  min-w-[200px]"></div>
     );
   };
-  console.log(MoviInfo)
+  // console.log(MoviInfo)
 
   if (MoviInfo.length === 0 || MoviInfo === 'undefined') {
     return (

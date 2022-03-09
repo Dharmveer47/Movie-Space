@@ -4,8 +4,8 @@
 
 const API_URL = 'https://api.themoviedb.org/3/';
 
-// const API_KEY = process.env.REACT_APP_API_KEY;
-const API_KEY = "446cac9a81452603fb3694e031c2c458";
+const API_KEY = process.env.REACT_APP_API_KEY;
+// console.log(API_KEY2)
 // Tranding Movies and TvShow
 export const MEDIA_TYPE = {
   ALL: 'all',

@@ -52,6 +52,7 @@ const MoviesExple = () => {
 
 const MoviesExplen = ({ data = [], type }) => {
   // Select all data Object value
+  console.log(data);
 
   const them = useContext(MovieState);
   const state = them.state;
@@ -69,7 +70,7 @@ const MoviesExplen = ({ data = [], type }) => {
       return item.english_name;
     })
     .join(", ");
-  // console.log(data);
+  
   // bg-Poster bg-blend-darken bg-no-repeat bg-center bg-cover
   let PosterImg = `http://image.tmdb.org/t/p/w300${data.poster_path}`;
   // let path = `${data.production_companies[0].logo_path ? data.production_companies[0].logo_path : Img}`;

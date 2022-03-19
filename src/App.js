@@ -18,6 +18,7 @@ import Login from "./Pages/Login";
 import Aboutme from "./Pages/Aboutme";
 import Aboutapi from "./Pages/Aboutapi";
 import MoviesExple from "./components/MoviesExple";
+import PeopleInfo from "./components/Geners/PeopleInfo";
 
 export const MovieState = React.createContext();
 const initialState = {
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/Aboutme" element={<Aboutme />} />
             <Route path="/Aboutapi" element={<Aboutapi />} />
             <Route path="/MoviesExple/:type/:id/" element={<MoviesExple/>} />
+            <Route path="/PeopleInfo/:type/:id/" element={<PeopleInfo/>} />
           </Routes>
           <Footer />
         </Router>

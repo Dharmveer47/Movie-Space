@@ -52,7 +52,7 @@ const MoviesExple = () => {
 
 const MoviesExplen = ({ data = [], type }) => {
   // Select all data Object value
-  console.log(data);
+  // console.log(data);
 
   const them = useContext(MovieState);
   const state = them.state;
@@ -70,35 +70,29 @@ const MoviesExplen = ({ data = [], type }) => {
       return item.english_name;
     })
     .join(", ");
-  
+
   // bg-Poster bg-blend-darken bg-no-repeat bg-center bg-cover
-  let PosterImg = `http://image.tmdb.org/t/p/w300${data.poster_path}`;
+  let PosterImg = `http://image.tmdb.org/t/p/w500${data.poster_path}`;
   // let path = `${data.production_companies[0].logo_path ? data.production_companies[0].logo_path : Img}`;
   // const Logo = `http://image.tmdb.org/t/p/w92/${path} `;
   return (
-    <div
-      className="
-      flexCB w-full mx-auto mdx:flex-col md:w-[90%] shadow-md rounded-lg backdrop-blur-sm bg-black/25  "
-    >
+    <MoviesExpleMain>
       <div className="ml-[5%] mdx:ml-[0%] basis-1/4  flexCC flex-col m-2 shadow-md rounded-3xl">
         <img
           src={PosterImg}
           alt="cardImg"
-          className="mdx:min-w-[100px] max-w-sm h-auto rounded-3xl "
-        />
-        <img
-          // src={Logo}
-          className="my-2 shadow-md"
-          alt=""
+          className="w-[300px] mdx:min-w-[100px] sm:max-w-sm h-auto rounded-3xl"
         />
       </div>
       <div className="ml-[10%] mdx:ml-[0%] basis-3/4 m-2 mdx:flexCC flex-col mdx:w-[90%] mx-auto mr-10 mdx:m-0">
         <h1 className=" text-4xl text-center font-bold my-3">
-          {type === "tv" ? data.name : data.title}({type})
+          {type === "tv" ? data.name : data.title} ({type})
         </h1>
         <div className="flexCB w-60 mdx:mx-auto smx:flex-col smx:w-auto">
           <p>PG-13</p>
-          <p>Air date : { type === 'tv'? data.last_air_date: data.release_date}  </p>
+          <p>
+            Air date : {type === "tv" ? data.last_air_date : data.release_date}{" "}
+          </p>
         </div>
         <div className="mdx:text-center ">
           <div className="flex items-center space-x-1 mdx:justify-center">
@@ -109,11 +103,12 @@ const MoviesExplen = ({ data = [], type }) => {
           <p>Status : {data.status}</p>
           <p>{Geners}</p>
           <p>Spoken Language : {Language}</p>
-          <p>Budget : 
-            {`${type === "tv" ? data.in_production  : data.budget}`} </p>
+          <p>
+            Budget :{`${type === "tv" ? data.in_production : data.budget}`}{" "}
+          </p>
           <p className="flex items-center mdx:justify-center">
             Total Durection : <BsDot className="w-10 h-10" />
-            {type === "tv"? data.episode_run_time : data.runtime}m
+            {type === "tv" ? data.episode_run_time : data.runtime}m
           </p>
         </div>
 
@@ -140,21 +135,18 @@ const MoviesExplen = ({ data = [], type }) => {
             return <ProductionComp key={index} data={item} />;
           })}
         </div>
-        {/* <div className="w-[80%] text-center  my-4 whitespace-nowrap">
-          <div className="font-bold flex justify-around">
-            <div className="">Compay Director </div>
-            <div className="">Lorem ipsum</div>
-          </div>
-          <div className=" flex justify-around">
-            <div>Alfreds Futterkiste</div>
-            <div>Maria Anders</div>
-          </div>
-          <div className=" flex justify-around">
-            <div>Alfreds </div>
-            <div> Anders</div>
-          </div>
-        </div> */}
       </div>
+    </MoviesExpleMain>
+  );
+};
+
+export const MoviesExpleMain = ({ children }) => {
+  return (
+    <div
+      className="
+    flexCB w-full mx-auto mdx:flex-col md:w-[90%] shadow-md rounded-lg backdrop-blur-sm bg-black/25  "
+    >
+      {children}
     </div>
   );
 };

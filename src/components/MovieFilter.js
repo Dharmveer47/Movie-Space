@@ -7,7 +7,7 @@ const MovieFilter = ({ type = "Loading..." }) => {
   return (
     <div className=" flexCC w-[90%] m-auto h-8 bg-gradient-to-r from-gray-100 to-gray-500 rounded-2xl my-2">
       <h1 className="font-bold text-gray-800 text-lg truncate mdx:text-sm ">
-        {type}
+        {type === undefined ? <div>Loading..</div> : type}
       </h1>
       <div className="0smx:hidden mx-2 w-6 h-6 bg-gradient-to-br from-green-400 to-pink-500 animate-spin-slow  rounded-full flexCC shadow-md border-white border">
         <div className=" w-3 h-3 bg-white rounded-full shadow-inner"></div>
@@ -53,6 +53,7 @@ const FilterTranding = ({ type = "Loading ..." }) => {
 const NextPrevious = ({ page = 20, next=1, setNext, search }) => {
   const bgDark = useContext(MovieState);
   const state = bgDark.state;
+  // console.log(page);
 
   const Inc = () => {
     if (next === page) {
@@ -70,7 +71,7 @@ const NextPrevious = ({ page = 20, next=1, setNext, search }) => {
   };
 
   return (
-    <div className={`${search?'hidden': ''}`}>
+    <div className={`${search  || page.length === 0 ? 'hidden': ''}`}>
       <div className=" flex items-center justify-evenly w-[90%]  mx-auto mb-10 h-8 bg-gradient-to-r from-gray-100 to-gray-500 rounded-2xl my-2">
         <h1 className="font-bold text-gray-800 text-lg mdx:text-sm truncate">
           Total Pages : {page}

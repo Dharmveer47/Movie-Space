@@ -18,7 +18,7 @@ const Tailor = ({ getVideo = "" }) => {
     }
     return;
   };
-  console.log(video);
+  // console.log(video);
 
   return (
     <>
@@ -35,7 +35,6 @@ const Tailor = ({ getVideo = "" }) => {
 };
 
 const TailorCard = ({ data }) => {
-  console.log(data);
   return (
     <>
       <div className="my-10 border-2  relative  rounded-xl shadow-md group mx-2 ">

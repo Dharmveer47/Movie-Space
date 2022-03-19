@@ -5,8 +5,8 @@ import { IMAGE_BASE_URL_CARD } from "../Api";
 import { NextPrevious } from "./MovieFilter";
 import Poster from "../img/ProfileDrawer.png";
 
-const Card = ({ showType = "initial", type, search }) => {
-  // console.log(showType);
+const Card = ({ showType = "initial", type, search, cast = [] }) => {
+  // console.log(cast);
   const [MoviInfo, setMoviInfo] = useState([]);
   const [total_pages, settotal_pages] = useState([]);
   const [next, setNext] = useState(1);
@@ -16,7 +16,10 @@ const Card = ({ showType = "initial", type, search }) => {
 
   useEffect(() => {
     GetMovies(showUrl);
-  }, [showUrl]);
+    if (cast.length > 0) {
+      setMoviInfo(cast);
+    }
+  }, [showUrl, cast]);
 
   const GetMovies = async (urlMovie) => {
     let response = await axios.get(urlMovie);
@@ -36,7 +39,7 @@ const Card = ({ showType = "initial", type, search }) => {
   };
   // console.log(MoviInfo)
 
-  if (MoviInfo.length === 0 || MoviInfo === 'undefined') {
+  if (MoviInfo.length === 0 || MoviInfo === "undefined") {
     return (
       <>
         <div
@@ -78,8 +81,8 @@ const Card = ({ showType = "initial", type, search }) => {
 };
 
 const SingleCard = ({ data, type }) => {
-  if(data.length !== 2){
-    return <div></div>
+  if (data.length !== 2) {
+    return <div></div>;
   }
   return (
     <>

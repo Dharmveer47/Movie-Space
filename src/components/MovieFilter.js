@@ -4,6 +4,7 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { GiPreviousButton, GiNextButton } from "react-icons/gi";
 
 const MovieFilter = ({ type = "Loading..." }) => {
+
   return (
     <div className=" flexCC w-[90%] m-auto h-8 bg-gradient-to-r from-gray-100 to-gray-500 rounded-2xl my-2">
       <h1 className="font-bold text-gray-800 text-lg truncate mdx:text-sm ">

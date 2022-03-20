@@ -93,8 +93,8 @@ const CharVis = ({ data = [] }) => {
                   : "vote_count"
               }
               interval={0}
-              height={10}
-              width={80}
+              // height={10}
+              // width={80}
             />
             <ZAxis
               type="number"

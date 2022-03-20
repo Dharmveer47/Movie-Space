@@ -96,7 +96,7 @@ const HeroInfo = ({ heroData = [] }) => {
           }  `}
         >
           <img
-            src={`http://image.tmdb.org/t/p/w300${profile_path}`}
+            src={`http://image.tmdb.org/t/p/w500${profile_path}`}
             alt="Hero Img"
             className=" w-[300px] mdx:min-w-[100px] sm:max-w-sm h-auto rounded-3xl"
           />

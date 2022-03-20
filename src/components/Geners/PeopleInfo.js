@@ -5,6 +5,7 @@ import Card from "../Card";
 import { useParams } from "react-router-dom";
 import { API_URL, API_KEY } from "../../Api";
 import axios from "axios";
+import CharVis from "./CharVis";
 
 const initila = {
   personUrl: [],
@@ -44,8 +45,8 @@ const PeopleInfo = () => {
     return <div>loading....</div>;
   }
 
-  console.log(heroData.casts.cast);
-  // const MapPlat = heroData.casts.cast
+  // console.log(heroData.casts.cast);
+  const MapPlat = heroData.casts.cast
   // const { biography } = heroData;
 
   return (
@@ -63,9 +64,12 @@ const PeopleInfo = () => {
       </div>
       <Card cast={heroData.casts.cast} type={type} />
       <MovieFilter type={`At a Glance `} />
+      <CharVis data={MapPlat}/>
     </>
   );
 };
+
+
 
 const HeroInfo = ({ heroData = [] }) => {
   if (heroData.length === 0 || heroData === undefined) {

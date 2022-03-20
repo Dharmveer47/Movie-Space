@@ -39,9 +39,9 @@ const Home = () => {
       <MovieFilter type={"TvShow's Today Trending"} />
       <Card  showType={TRENDING_TVSHOW} type="tv"/>
 
-      <MovieFilter type={"Free ! Watch on MXplayer"} />
-      <Card showType={TRENDING_MOVIES } type="movie" />
-      <MovieFilter type={"Latest Tailor Movie & Tvshow"} />
+      {/* <MovieFilter type={"Free ! Watch on MXplayer"} /> */}
+      {/* <Card showType={TRENDING_MOVIES } type="movie" /> */}
+      {/* <MovieFilter type={"Latest Tailor Movie & Tvshow"} /> */}
       {/* <Tailor /> */}
     </div>
   );

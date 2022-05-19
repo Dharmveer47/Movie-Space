@@ -37,6 +37,7 @@ const SingleGener = ({ data }) => {
     <Link to={`/PeopleInfo/${type}/${data.id}`}>
       <div className="hover:bg-gray-50/10 hover:min-w-[10rem] border-1 bg-gray-50/5 shadow-xl flexCC flex-col mx-3 p-3 cursor-pointer rounded-lg">
         <img
+          loading="lazy"
           src={GenImg}
           className="rounded-md min-w-[120px] mt-1 "
           alt="Gener"

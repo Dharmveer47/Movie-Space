@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 import { IMAGE_BASE_URL_CARD } from "../Api";
 import { NextPrevious } from "./MovieFilter";
@@ -14,23 +14,33 @@ const Card = ({ showType = "initial", type, search, cast = [] }) => {
   let showUrl = `${search ? showType : showType + next}`;
   // console.log(showUrl);
 
-  useEffect(() => {
-    GetMovies(showUrl);
-    if (cast.length > 0) {
-      setMoviInfo(cast);
-    }
-  }, [showUrl, cast]);
+  // const GetMovies = async (urlMovie) => {
+  //   let response = await axios.get(urlMovie);
+  //   if (response.status === 200) {
+  //     setMoviInfo(response.data.results);
+  //     settotal_pages(response.data.total_pages);
+  //   } else {
+  //     console.log("error");
+  //   }
+  //   return;
+  // };
 
-  const GetMovies = async (urlMovie) => {
-    let response = await axios.get(urlMovie);
-    if (response.status === 200) {
-      setMoviInfo(response.data.results);
-      settotal_pages(response.data.total_pages);
-    } else {
-      console.log("error");
-    }
-    return;
+  const fetchData = async (Url) => {
+    await fetch(Url)
+      .then((res) => res.json())
+      .then((data) => {
+        setMoviInfo(data.results);
+        settotal_pages(data.total_pages);
+      });
+   
   };
+  // if (cast.length > 1) {
+  //   setMoviInfo(cast);
+  // }
+  useEffect(() => {
+    fetchData(showUrl);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showUrl]);
 
   const Loading = () => {
     return (
@@ -115,6 +125,7 @@ const SingleCard01 = ({ data }) => {
   return (
     <div className="relative ">
       <img
+        loading="lazy"
         src={`${cardImg === null ? Poster : cardImg}`}
         alt=""
         className="mdx:min-w-[100px]  h-auto min-w-[160px]   rounded-md shadow-lg transition duration-500"

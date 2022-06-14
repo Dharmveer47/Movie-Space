@@ -79,6 +79,7 @@ const MoviesExplen = ({ data = [], type }) => {
     <MoviesExpleMain>
       <div className="ml-[5%] mdx:ml-[0%] basis-1/4  flexCC flex-col m-2 shadow-md rounded-3xl">
         <img
+          loading="lazy"
           src={PosterImg}
           alt="cardImg"
           className="w-[300px] mdx:min-w-[100px] sm:max-w-sm h-auto rounded-3xl"

@@ -10,7 +10,10 @@
 html{
     scroll-behavior: smooth;
 }
-
+head{
+    background-color: #000000;
+    padding: 1rem;
+}
 @layer components {
     
     .container {

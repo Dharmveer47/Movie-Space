@@ -8,12 +8,16 @@ import { ACTION } from "../Reducer/reducer";
 
 const Navbar = () => {
   const [navShowHide, setNavShowHide] = useState(false);
-  
+
   const navShow = useContext(MovieState);
   const state = navShow.state;
   const dispatch = navShow.dispatch;
   return (
-    <div className="flexCB whitespace-nowrap h-16 z-20 relative ">
+    <div
+      className={`flexCB whitespace-nowrap h-16 z-20 sticky top-0 ${
+        state.them ? "bg-gray-800 text-gray-50" : "bg-inherit text-gray-800"
+      }`}
+    >
       <Link to="/" className="ml-2 w-1/2">
         <BiMoviePlay
           className={`${
@@ -28,10 +32,10 @@ const Navbar = () => {
             navShowHide ? "mdx:navMobile02 " : "mdx:-translate-x-[100%]"
           }`}
         >
-          <NavLink 
-            setNavShowHide={setNavShowHide} 
-            navShowHide={navShowHide} 
-            links={"Home"} 
+          <NavLink
+            setNavShowHide={setNavShowHide}
+            navShowHide={navShowHide}
+            links={"Home"}
             state={state}
           />
           {/* <NavLink
@@ -53,12 +57,12 @@ const Navbar = () => {
             links={"TvShow"}
             state={state}
           />
-          <NavLink
+          {/* <NavLink
             setNavShowHide={setNavShowHide}
             navShowHide={navShowHide}
             links={"Login"}
             state={state}
-          />
+          /> */}
           <NavLink
             setNavShowHide={setNavShowHide}
             navShowHide={navShowHide}
@@ -92,6 +96,9 @@ const Navbar = () => {
               <FaSun className={`w-6 h-6 text-yellow-300 animate-spin-slow `} />
             </div>
           </button>
+          <div className="ml-5 mr-1 font-bold cursor-pointer font-sans hover:text-gray-700 hover:bg-gray-200 border py-1 px-4 rounded-sm">
+            Logout
+          </div>
         </ul>
       </div>
       <div className="md:hidden ">
@@ -114,7 +121,7 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ links, setNavShowHide, navShowHide,state }) => {
+const NavLink = ({ links, setNavShowHide, navShowHide, state }) => {
   // console.log(navShowHide);
   const location = useLocation();
   const { pathname } = location;

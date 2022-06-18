@@ -3,9 +3,10 @@
     "name": "Movies Space",
     "short_name": "Movies Space",
     "start_url": "movies-space.netlify.app/",
-    "display": "standalone",
+    "display": "fullscreen",
     "background_color": "#000",
     "theme_color": "#000",
+    
     "description": "A readable Hacker News app.",
     "icons": [
         {

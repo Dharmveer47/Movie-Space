@@ -29,7 +29,7 @@ const initialState = {
   loading: false,
   error: null,
   navf: false,
-  them: false
+  them: true,
 };
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -38,7 +38,6 @@ const App = () => {
       <MovieState.Provider value={{ state, dispatch }}>
         <Router>
           <Navbar />
-          
           <Gotop />
           <Routes>
             <Route path="/Home" element={<Navigate to="/" />} />

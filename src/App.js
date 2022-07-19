@@ -32,7 +32,7 @@ const initialState = {
   them: true,
 };
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [ state, dispatch ] = useReducer(reducer, initialState);
   return (
     <div className={`${state.them ? "bg-gradient-to-br to-cyan-900 from-gray-900 text-gray-50"  : "bg-gray-50"}   font-['Ubuntu']`}>
       <MovieState.Provider value={{ state, dispatch }}>

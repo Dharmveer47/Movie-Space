@@ -17,9 +17,7 @@ const initial = {
 };
 
 const CharVis = ({ data = [] }) => {
-  console.log(data);
   const [graph, setGraph] = useState(initial);
-  console.log(graph);
 
   useEffect(() => {
     setGraph(initial);
@@ -43,7 +41,7 @@ const CharVis = ({ data = [] }) => {
           }}
         >
           <div>
-            Title : <span>{data.title}</span>
+            Title : <span>{data?.title || data?.name}</span>
           </div>
           <div>
             Character : <span>{data.character}</span>
@@ -65,7 +63,6 @@ const CharVis = ({ data = [] }) => {
   };
 
   const domain = parseDomain(data);
-  console.log(domain);
   const range = [50, domain[1]];
 
   return (

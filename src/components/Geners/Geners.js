@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 export const Geners = ({ geners }) => {
+  console.log(geners);
  
   const [gernerInfo, setGenerInfo] = useState([]);
 

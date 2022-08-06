@@ -25,20 +25,22 @@ const Card = ({ showType = "initial", type, search, cast = [] }) => {
   //   return;
   // };
 
-  const fetchData = async (Url) => {
-    await fetch(Url)
+  function fetchData(Url) {
+    fetch(Url)
       .then((res) => res.json())
       .then((data) => {
-        setMoviInfo(data.results);
+        if (cast.length > 1) {
+          setMoviInfo(cast);
+        } else {
+          setMoviInfo(data.results);
+        }
         settotal_pages(data.total_pages);
       });
-   
-  };
-  // if (cast.length > 1) {
-  //   setMoviInfo(cast);
-  // }
+  }
+
   useEffect(() => {
     fetchData(showUrl);
+    
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showUrl]);
 
@@ -47,7 +49,8 @@ const Card = ({ showType = "initial", type, search, cast = [] }) => {
       <div className="h-52 relative m-2 my-3 sha dow-lg  rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse border-4  min-w-[200px]"></div>
     );
   };
-  // console.log(MoviInfo)
+  console.log(MoviInfo)
+  console.log(cast)
 
   if (MoviInfo.length === 0 || MoviInfo === "undefined") {
     return (

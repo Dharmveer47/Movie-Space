@@ -63,7 +63,7 @@ const Navbar = () => {
             links={"Login"}
             state={state}
           /> */}
-          <NavLink
+          {/* <NavLink
             setNavShowHide={setNavShowHide}
             navShowHide={navShowHide}
             links={"AboutMe"}
@@ -74,7 +74,7 @@ const Navbar = () => {
             navShowHide={navShowHide}
             links={"AboutAPI"}
             state={state}
-          />
+          /> */}
           <button
             className={`w-20 h-8  rounded-2xl  border flex items-center px-2 cursor-pointer shadow-inner box-border ${
               state.them ? "bg-slate-900 transition " : "bg-slate-400 "

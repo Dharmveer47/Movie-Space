@@ -45,9 +45,10 @@ const PeopleInfo = () => {
     return <div>loading....</div>;
   }
 
-  // console.log(heroData.casts.cast);
+  // console.log(heroData);
   const MapPlat = heroData.casts.cast
   // const { biography } = heroData;
+
 
   return (
     <>
